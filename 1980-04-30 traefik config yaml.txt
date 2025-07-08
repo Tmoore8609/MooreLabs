@@ -1,0 +1,43 @@
+traefik config.yaml
+
+
+
+http:
+  middlewares:
+    crowdsec-bouncer:
+      forwardauth:
+        address: http://bouncer-traefik:8080/api/v1/forwardAuth
+        trustForwardHeader: true
+    default-security-headers:
+      headers:
+        customBrowserXSSValue: 0
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        frameDeny: false
+        referrerPolicy: strict-origin-when-cross-origin
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 3153600
+        contentSecurityPolicy: default-src 'self'
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+    https-redirectscheme:
+      redirectScheme:
+        scheme: https
+        permanent: true
+  routers:
+    portainer:
+      entryPoints:
+        - https
+      rule: Host(`portainer.elainaelaine.com`)
+      middlewares:
+        - default-security-headers
+        - https-redirectscheme
+      tls: {}
+      service: portainer
+  services:
+    portainer:
+      loadBalancer:
+        servers:
+          - url: https://192.130.80.4:9443
+        passHostHeader: true
