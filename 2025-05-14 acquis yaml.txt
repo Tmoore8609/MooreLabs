@@ -1,7 +1,0 @@
-acquis.yaml
-
-
-filenames:
-  - /var/log/traefik/*
-labels:
-  type: traefik
