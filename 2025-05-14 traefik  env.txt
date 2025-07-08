@@ -1,3 +1,0 @@
-traefik .env
-
-TRAEFIK_DASHBOARD_CREDENTIALS=admin:$$2y$$05$$hRP9VZyJ57jRh7ZuiPTeiuQGxFgw4TwGO87fccHeqji/0yKabVAPi
