@@ -16,10 +16,6 @@ entryPoints:
     # http:
     #  middlewares: # uncomment if using CrowdSec - see my video
     #    - crowdsec-bouncer@file
-  # tcp:
-   # address: ":10000"
-  # apis:
-   # address: ":33073"
 serversTransport:
   insecureSkipVerify: true
 providers:
